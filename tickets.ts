@@ -14,7 +14,7 @@ interface Ticket {
 
 function findPathFromTickets(tickets: Ticket[]) {
   if (!tickets.length) return;
-  if (IsInputTypeValid(tickets)) throw new Error("Invalid input");
+  if (IsInputTypeInvalid(tickets)) throw new Error("Invalid input");
 
   const destinations = getListOfItemByKey(tickets, "destination");
   const sources = getListOfItemByKey(tickets, "source");
@@ -31,7 +31,7 @@ function findPathFromTickets(tickets: Ticket[]) {
   return convertArrayToString(route);
 }
 
-function IsInputTypeValid(input: Ticket[] = []) {
+function IsInputTypeInvalid(input: Ticket[] = []) {
   return input.find((item) => !("source" in item) || !("destination" in item));
 }
 
